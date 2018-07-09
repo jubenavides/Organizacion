@@ -1,30 +1,22 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Universidad Core
+ * Arquitectura de software
+ * NRC: 3747 
+ * Tutor: HENRY RAMIRO CORAL CORAL 
+ * 2018 (c) Universidad Core.
  */
 package ec.edu.espe.arquitectura.organizacion.model;
 
 import java.io.Serializable;
-import java.util.Collection;
 import java.util.Date;
-import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -32,46 +24,42 @@ import javax.xml.bind.annotation.XmlTransient;
  */
 @Entity
 @Table(name = "cra_malla")
-@XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "CraMalla.findAll", query = "SELECT c FROM CraMalla c")
-    , @NamedQuery(name = "CraMalla.findByCodMalla", query = "SELECT c FROM CraMalla c WHERE c.codMalla = :codMalla")
-    , @NamedQuery(name = "CraMalla.findByFechaElaboracion", query = "SELECT c FROM CraMalla c WHERE c.fechaElaboracion = :fechaElaboracion")
-    , @NamedQuery(name = "CraMalla.findByFechaVigencia", query = "SELECT c FROM CraMalla c WHERE c.fechaVigencia = :fechaVigencia")})
 public class CraMalla implements Serializable {
 
     private static final long serialVersionUID = 1L;
+    
     @Id
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 6)
-    @Column(name = "COD_MALLA")
-    private String codMalla;
+    @Column(name = "COD_MALLA", nullable = false, length = 6)
+    private String codigo;
+    
     @Column(name = "FECHA_ELABORACION")
     @Temporal(TemporalType.DATE)
     private Date fechaElaboracion;
+    
     @Column(name = "FECHA_VIGENCIA")
     @Temporal(TemporalType.DATE)
     private Date fechaVigencia;
-    @JoinColumn(name = "COD_CARRERA", referencedColumnName = "COD_CARRERA")
-    @ManyToOne(optional = false)
+    
+//    @OneToMany(cascade = CascadeType.ALL, mappedBy = "codigo")
+//    private Collection<DetalleMalla> detalleMallaCollection;
+    
+    @JoinColumn(name = "COD_CARRERA", referencedColumnName = "COD_CARRERA", nullable = false, updatable = false, insertable = false)
+    @ManyToOne
     private CraCarrera codCarrera;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "codMalla")
-    private Collection<CraDetalleMalla> craDetalleMallaCollection;
 
     public CraMalla() {
     }
 
-    public CraMalla(String codMalla) {
-        this.codMalla = codMalla;
+    public CraMalla(String codigo) {
+        this.codigo = codigo;
     }
 
-    public String getCodMalla() {
-        return codMalla;
+    public String getCodigo() {
+        return codigo;
     }
 
-    public void setCodMalla(String codMalla) {
-        this.codMalla = codMalla;
+    public void setCodigo(String codigo) {
+        this.codigo = codigo;
     }
 
     public Date getFechaElaboracion() {
@@ -98,19 +86,10 @@ public class CraMalla implements Serializable {
         this.codCarrera = codCarrera;
     }
 
-    @XmlTransient
-    public Collection<CraDetalleMalla> getCraDetalleMallaCollection() {
-        return craDetalleMallaCollection;
-    }
-
-    public void setCraDetalleMallaCollection(Collection<CraDetalleMalla> craDetalleMallaCollection) {
-        this.craDetalleMallaCollection = craDetalleMallaCollection;
-    }
-
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (codMalla != null ? codMalla.hashCode() : 0);
+        hash += (codigo != null ? codigo.hashCode() : 0);
         return hash;
     }
 
@@ -121,7 +100,7 @@ public class CraMalla implements Serializable {
             return false;
         }
         CraMalla other = (CraMalla) object;
-        if ((this.codMalla == null && other.codMalla != null) || (this.codMalla != null && !this.codMalla.equals(other.codMalla))) {
+        if ((this.codigo == null && other.codigo != null) || (this.codigo != null && !this.codigo.equals(other.codigo))) {
             return false;
         }
         return true;
@@ -129,7 +108,7 @@ public class CraMalla implements Serializable {
 
     @Override
     public String toString() {
-        return "ec.edu.espe.arquitectura.organizacion.model.CraMalla[ codMalla=" + codMalla + " ]";
+        return "Malla{" + "codigo=" + codigo + ", fechaElaboracion=" + fechaElaboracion + ", fechaVigencia=" + fechaVigencia + ", codCarrera=" + codCarrera + '}';
     }
     
 }
