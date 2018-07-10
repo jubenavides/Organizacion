@@ -33,12 +33,12 @@ public class UnidadService {
         return this.unidadFacade.find(codigo);
     }
 
-    public void crear(OrgUnidad prerrequsito) {
-        this.unidadFacade.create(prerrequsito);
+    public void crear(OrgUnidad unidad) {
+        this.unidadFacade.create(unidad);
     }
 
-    public void modificar(OrgUnidad prerrequisito) {
-        this.unidadFacade.edit(prerrequisito);
+    public void modificar(OrgUnidad unidad) {
+        this.unidadFacade.edit(unidad);
     }
 
     public void eliminar(String codigo) {
