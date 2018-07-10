@@ -13,7 +13,6 @@
   <name>Organizacion</name>
   <modules>
     <module>Organizacion-ear</module>
-    <module>Organizacion-web</module>
     <module>Organizacion-ejb</module>
     <module>OrganizacionRest</module>
   </modules>

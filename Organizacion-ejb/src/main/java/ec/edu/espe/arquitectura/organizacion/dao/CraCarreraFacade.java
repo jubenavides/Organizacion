@@ -6,9 +6,11 @@
 package ec.edu.espe.arquitectura.organizacion.dao;
 
 import ec.edu.espe.arquitectura.organizacion.model.CraCarrera;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 /**
  *
@@ -28,5 +30,11 @@ public class CraCarreraFacade extends AbstractFacade<CraCarrera> {
     public CraCarreraFacade() {
         super(CraCarrera.class);
     }
-    
+
+    public List<CraCarrera> obtenerPorNombreCarrera(String nombreCarrera) {
+        Query q = this.em.createQuery("SELECT obj FROM CraCarrera obj WHERE obj.descripcion LIKE :nomBus");
+        q.setParameter("nomBus", "%" + nombreCarrera + "%");
+        return q.getResultList();
+    }
+
 }

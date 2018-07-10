@@ -20,16 +20,34 @@ import javax.ejb.Stateless;
  */
 @Stateless
 @LocalBean
-public class AsignaturaService{
+public class AsignaturaService {
+
     @EJB
     private CraAsignaturaFacade asignaturaFacade;
-    
-    public List<CraAsignatura> obtenerTodos(){
+
+    public List<CraAsignatura> obtenerTodos() {
         return this.asignaturaFacade.findAll();
     }
-    
-    public List<CraAsignatura> obtenerPorNombreAsignatura(String nombreAsignatura){
+
+    public CraAsignatura obtenerPorCodigo(String codigo) {
+        return this.asignaturaFacade.find(codigo);
+    }
+
+    public void crear(CraAsignatura asignatura) {
+        this.asignaturaFacade.create(asignatura);
+    }
+
+    public void modificar(CraAsignatura asignatura) {
+        this.asignaturaFacade.edit(asignatura);
+    }
+
+    public void eliminar(String codigo) {
+        CraAsignatura asignatura = this.asignaturaFacade.find(codigo);
+        this.asignaturaFacade.remove(asignatura);
+    }
+
+    public List<CraAsignatura> obtenerPorNombreAsignatura(String nombreAsignatura) {
         return this.asignaturaFacade.obtenerPorNombreAsignatura(nombreAsignatura);
     }
-    
+
 }

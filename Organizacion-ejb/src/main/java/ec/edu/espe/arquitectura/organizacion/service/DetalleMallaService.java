@@ -19,20 +19,33 @@ import javax.ejb.Stateless;
 @Stateless
 @LocalBean
 public class DetalleMallaService {
-    
+
     @EJB
     private CraDetalleMallaFacade detalleMallaFacade;
-    
+
     public List<CraDetalleMalla> obtenerTodos() {
         return this.detalleMallaFacade.findAll();
     }
-    
-    public CraDetalleMalla obtenerPorCodigoDetalleMalla(Integer codigo) {
+
+    public CraDetalleMalla obtenerPorCodigo(String codigo) {
         return this.detalleMallaFacade.find(codigo);
     }
-    
-    public List<CraDetalleMalla> obtenerPorNombre(String nombreAsignatura) {
+
+    public void crear(CraDetalleMalla malla) {
+        this.detalleMallaFacade.create(malla);
+    }
+
+    public void modificar(CraDetalleMalla malla) {
+        this.detalleMallaFacade.edit(malla);
+    }
+
+    public void eliminar(String codigo) {
+        CraDetalleMalla malla = this.detalleMallaFacade.find(codigo);
+        this.detalleMallaFacade.remove(malla);
+    }
+
+    public List<CraDetalleMalla> obtenerPorNombreAsignatura(String nombreAsignatura) {
         return this.detalleMallaFacade.obtenerPorNombreAsignatura(nombreAsignatura);
     }
-    
+
 }

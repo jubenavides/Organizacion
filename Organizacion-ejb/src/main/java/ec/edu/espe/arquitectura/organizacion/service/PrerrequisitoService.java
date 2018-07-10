@@ -19,26 +19,29 @@ import javax.ejb.Stateless;
 @Stateless
 @LocalBean
 public class PrerrequisitoService {
-    
+
     @EJB
     private CraPrerrequisitoFacade prerrequisitoFacade;
-    
+
     public List<CraPrerrequisito> obtenerTodos() {
         return this.prerrequisitoFacade.findAll();
     }
-    
+
+    public CraPrerrequisito obtenerPorCodigo(Integer codigo) {
+        return this.prerrequisitoFacade.find(codigo);
+    }
+
     public void crear(CraPrerrequisito prerrequsito) {
         this.prerrequisitoFacade.create(prerrequsito);
     }
-    
-    public void modificar (CraPrerrequisito prerrequisito) {
+
+    public void modificar(CraPrerrequisito prerrequisito) {
         this.prerrequisitoFacade.edit(prerrequisito);
     }
-    
-    public void eliminar(Integer codigo)
-    {
+
+    public void eliminar(Integer codigo) {
         CraPrerrequisito prerrequisito = this.prerrequisitoFacade.find(codigo);
         this.prerrequisitoFacade.remove(prerrequisito);
     }
- 
+
 }

@@ -6,9 +6,11 @@
 package ec.edu.espe.arquitectura.organizacion.dao;
 
 import ec.edu.espe.arquitectura.organizacion.model.OrgUnidad;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 /**
  *
@@ -28,5 +30,10 @@ public class OrgUnidadFacade extends AbstractFacade<OrgUnidad> {
     public OrgUnidadFacade() {
         super(OrgUnidad.class);
     }
-    
+
+    public List<OrgUnidad> obtenerPorNombre(String unidadNombre) {
+        Query q = this.em.createQuery("SELECT obj FROM OrgUnidad obj WHERE obj.nombre LIKE :nomBus");
+        q.setParameter("nomBus", "%" + unidadNombre + "%");
+        return q.getResultList();
+    }
 }
