@@ -46,8 +46,20 @@ public class CarreraService {
         this.carreraFacade.remove(carrera);
     }
     
-    public List<CraCarrera> obtenerPorNombre(String unidadNombre) {
-        return this.carreraFacade.obtenerPorNombreCarrera(unidadNombre);
+    public List<CraCarrera> obtenerPorNombre(String carreraNombre) {
+        return this.carreraFacade.obtenerPorNombreCarrera(carreraNombre);
     }
 
+    public List<CraCarrera> obtenerPorNombreDepartamento(String nombreDep) {
+        return this.carreraFacade.obtenerPorNombreDepartamento(nombreDep);
+    }
+    
+    public List<CraCarrera> obtenerPorCodDepartamento(String codDepartamento) {
+        return this.carreraFacade.obtenerPorCodDepartamento(codDepartamento);
+    }
+    
+     public List<CraCarrera> obtenerPorModalidad(String modalidad) {
+        return this.carreraFacade.obtenerPorModalidad(modalidad);
+    }
+    
 }

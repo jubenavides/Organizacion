@@ -22,28 +22,28 @@ import javax.persistence.Table;
  * @author jolube
  */
 @Entity
-@Table(name = "cra_prerrequisito")
-public class CraPrerrequisito implements Serializable {
+@Table(name = "cra_prerequisito")
+public class CraPrerequisito implements Serializable {
 
     private static final long serialVersionUID = 1L;
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "COD_PRERREQUISITO")
+    @Column(name = "COD_PREREQUISITO")
     private Integer codigo;
     
-    @JoinColumn(name = "COD_MAT_MALLA", referencedColumnName = "COD_DETALLE_MALLA", nullable = false, insertable = true, updatable = false)
+    @JoinColumn(name = "COD_MAT_MALLA", referencedColumnName = "COD_DETALLE_MALLA", nullable = false)
     @ManyToOne
     private CraDetalleMalla codMateria;
     
-    @JoinColumn(name = "COD_MAT_PRE", referencedColumnName = "COD_DETALLE_MALLA", nullable = false, insertable = true, updatable = false)
+    @JoinColumn(name = "COD_MAT_PRE", referencedColumnName = "COD_DETALLE_MALLA", nullable = false)
     @ManyToOne
     private CraDetalleMalla codPreRequisito;
     
-    public CraPrerrequisito() {
+    public CraPrerequisito() {
     }
 
-    public CraPrerrequisito(Integer codigo) {
+    public CraPrerequisito(Integer codigo) {
         this.codigo = codigo;
     }
 
@@ -81,10 +81,10 @@ public class CraPrerrequisito implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof CraPrerrequisito)) {
+        if (!(object instanceof CraPrerequisito)) {
             return false;
         }
-        CraPrerrequisito other = (CraPrerrequisito) object;
+        CraPrerequisito other = (CraPrerequisito) object;
         if ((this.codigo == null && other.codigo != null) || (this.codigo != null && !this.codigo.equals(other.codigo))) {
             return false;
         }
@@ -93,7 +93,7 @@ public class CraPrerrequisito implements Serializable {
 
     @Override
     public String toString() {
-        return "Prerrequisito{" + "codigo=" + codigo + ", codMateria=" + codMateria + ", codPreRequisito=" + codPreRequisito + '}';
+        return "Prerequisito{" + "codigo=" + codigo + ", codMateria=" + codMateria + ", codPreRequisito=" + codPreRequisito + '}';
     }
 
 }

@@ -37,4 +37,23 @@ public class CraCarreraFacade extends AbstractFacade<CraCarrera> {
         return q.getResultList();
     }
 
+    public List<CraCarrera> obtenerPorNombreDepartamento(String nombreDep) {
+        Query q = this.em.createQuery("SELECT obj FROM CraCarrera obj WHERE obj.codDepartamento.descripcion LIKE :nomBus");
+        q.setParameter("nomBus", "%" + nombreDep + "%");
+        return q.getResultList();
+    }
+    
+    public List<CraCarrera> obtenerPorCodDepartamento(String codDepartamento) {
+        Query q = this.em.createQuery("SELECT obj FROM CraCarrera obj WHERE obj.codDepartamento.codigo LIKE :nomBus");
+        q.setParameter("nomBus", "%" + codDepartamento + "%");
+        return q.getResultList();
+    }
+
+    public List<CraCarrera> obtenerPorModalidad(String modalidad) {
+        Query q = this.em.createQuery("SELECT obj FROM CraCarrera obj WHERE obj.modalidad LIKE :nomBus");
+        q.setParameter("nomBus", "%" + modalidad + "%");
+        return q.getResultList();
+    }
+
+    
 }

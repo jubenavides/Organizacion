@@ -5,8 +5,8 @@
  */
 package ec.edu.espe.arquitectura.organizacion.restService.service;
 
-import ec.edu.espe.arquitectura.organizacion.model.OrgUnidad;
-import ec.edu.espe.arquitectura.organizacion.service.UnidadService;
+import ec.edu.espe.arquitectura.organizacion.model.CraMalla;
+import ec.edu.espe.arquitectura.organizacion.service.MallaService;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
@@ -25,49 +25,49 @@ import javax.ws.rs.core.MediaType;
  * @author jolube
  */
 @Stateless
-@Path("/unidades")
-public class OrgUnidadREST {
+@Path("/mallas")
+public class CraMallaREST {
 
     @Inject
-    UnidadService unidadService;
+    MallaService mallaService;
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public List<OrgUnidad> findAll() {
-        return unidadService.obtenerTodos();
+    public List<CraMalla> findAll() {
+        return mallaService.obtenerTodos();
     }
 
     @GET
     @Path("{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    public OrgUnidad findById(@PathParam("id") String id) {
-        return unidadService.obtenerPorCodigo(id);
-    }
-
-    @GET
-    @Path("/nombre/{nombre}")
-    @Produces(MediaType.APPLICATION_JSON)
-    public List<OrgUnidad> findByName(@PathParam("nombre") String nombre) {
-        return unidadService.obtenerPorNombre(nombre);
+    public CraMalla findById(@PathParam("id") String id) {
+        return mallaService.obtenerPorCodigo(id);
     }
 
     @POST
     @Path("/insertar")
     @Consumes(MediaType.APPLICATION_JSON)
-    public void create(OrgUnidad unidad) {
-        unidadService.crear(unidad);
+    public void create(CraMalla carrera) {
+        mallaService.crear(carrera);
     }
 
     @PUT
     @Path("/modificar/{id}")
     @Consumes(MediaType.APPLICATION_JSON)
-    public void edit(@PathParam("id") String id, OrgUnidad unidad) {
-        unidadService.modificar(unidad);
+    public void edit(@PathParam("id") String id, CraMalla carrera) {
+        mallaService.modificar(carrera);
     }
 
     @DELETE
     @Path("/eliminar/{id}")
     public void remove(@PathParam("id") String id) {
-        unidadService.eliminar(id);
+        mallaService.eliminar(id);
+    }
+
+    @GET
+    @Path("/carrera/{nombre}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<CraMalla> findByCarrera(@PathParam("nombre") String nombre) {
+        return mallaService.obtenerPorNombreCarrera(nombre);
     }
 }

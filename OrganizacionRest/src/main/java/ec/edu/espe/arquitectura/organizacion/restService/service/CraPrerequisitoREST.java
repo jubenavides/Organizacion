@@ -5,8 +5,8 @@
  */
 package ec.edu.espe.arquitectura.organizacion.restService.service;
 
-import ec.edu.espe.arquitectura.organizacion.model.OrgUnidad;
-import ec.edu.espe.arquitectura.organizacion.service.UnidadService;
+import ec.edu.espe.arquitectura.organizacion.model.CraPrerequisito;
+import ec.edu.espe.arquitectura.organizacion.service.PrerequisitoService;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
@@ -25,49 +25,42 @@ import javax.ws.rs.core.MediaType;
  * @author jolube
  */
 @Stateless
-@Path("/unidades")
-public class OrgUnidadREST {
+@Path("/prerequisitos")
+public class CraPrerequisitoREST {
 
     @Inject
-    UnidadService unidadService;
+    PrerequisitoService prerequisitoService;
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public List<OrgUnidad> findAll() {
-        return unidadService.obtenerTodos();
+    public List<CraPrerequisito> findAll() {
+        return prerequisitoService.obtenerTodos();
     }
 
     @GET
     @Path("{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    public OrgUnidad findById(@PathParam("id") String id) {
-        return unidadService.obtenerPorCodigo(id);
-    }
-
-    @GET
-    @Path("/nombre/{nombre}")
-    @Produces(MediaType.APPLICATION_JSON)
-    public List<OrgUnidad> findByName(@PathParam("nombre") String nombre) {
-        return unidadService.obtenerPorNombre(nombre);
+    public CraPrerequisito findById(@PathParam("id") Integer id) {
+        return prerequisitoService.obtenerPorCodigo(id);
     }
 
     @POST
     @Path("/insertar")
     @Consumes(MediaType.APPLICATION_JSON)
-    public void create(OrgUnidad unidad) {
-        unidadService.crear(unidad);
+    public void create(CraPrerequisito prerequisito) {
+        prerequisitoService.crear(prerequisito);
     }
 
     @PUT
     @Path("/modificar/{id}")
     @Consumes(MediaType.APPLICATION_JSON)
-    public void edit(@PathParam("id") String id, OrgUnidad unidad) {
-        unidadService.modificar(unidad);
+    public void edit(@PathParam("id") Integer id, CraPrerequisito prerequisito) {
+        prerequisitoService.modificar(prerequisito);
     }
 
     @DELETE
     @Path("/eliminar/{id}")
-    public void remove(@PathParam("id") String id) {
-        unidadService.eliminar(id);
+    public void remove(@PathParam("id") Integer id) {
+        prerequisitoService.eliminar(id);
     }
 }

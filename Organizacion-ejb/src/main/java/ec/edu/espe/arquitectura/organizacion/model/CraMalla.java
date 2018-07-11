@@ -43,7 +43,7 @@ public class CraMalla implements Serializable {
 //    @OneToMany(cascade = CascadeType.ALL, mappedBy = "codigo")
 //    private Collection<DetalleMalla> detalleMallaCollection;
     
-    @JoinColumn(name = "COD_CARRERA", referencedColumnName = "COD_CARRERA", nullable = false, updatable = false, insertable = false)
+    @JoinColumn(name = "COD_CARRERA", referencedColumnName = "COD_CARRERA", nullable = false)
     @ManyToOne
     private CraCarrera codCarrera;
 

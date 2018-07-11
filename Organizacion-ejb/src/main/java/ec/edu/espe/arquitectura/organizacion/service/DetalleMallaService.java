@@ -27,7 +27,7 @@ public class DetalleMallaService {
         return this.detalleMallaFacade.findAll();
     }
 
-    public CraDetalleMalla obtenerPorCodigo(String codigo) {
+    public CraDetalleMalla obtenerPorCodigo(Integer codigo) {
         return this.detalleMallaFacade.find(codigo);
     }
 
@@ -39,7 +39,7 @@ public class DetalleMallaService {
         this.detalleMallaFacade.edit(malla);
     }
 
-    public void eliminar(String codigo) {
+    public void eliminar(Integer codigo) {
         CraDetalleMalla malla = this.detalleMallaFacade.find(codigo);
         this.detalleMallaFacade.remove(malla);
     }

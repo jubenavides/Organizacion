@@ -6,9 +6,11 @@
 package ec.edu.espe.arquitectura.organizacion.dao;
 
 import ec.edu.espe.arquitectura.organizacion.model.CraMalla;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 /**
  *
@@ -27,6 +29,12 @@ public class CraMallaFacade extends AbstractFacade<CraMalla> {
 
     public CraMallaFacade() {
         super(CraMalla.class);
+    }
+    
+    public List<CraMalla> obtenerPorNombreCarrera(String carrera) {
+        Query q = this.em.createQuery("SELECT obj FROM CraMalla obj WHERE obj.codCarrera.descripcion LIKE :nomBus");
+        q.setParameter("nomBus", "%" + carrera + "%");
+        return q.getResultList();
     }
     
 }

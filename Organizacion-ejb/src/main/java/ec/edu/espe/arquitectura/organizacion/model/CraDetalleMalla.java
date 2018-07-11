@@ -35,11 +35,11 @@ public class CraDetalleMalla implements Serializable {
     @Column(name = "NIVEL")
     private Integer nivel;
     
-    @JoinColumn(name = "COD_ASIGNATURA", referencedColumnName = "COD_ASIGNATURA", nullable = false, updatable =  false, insertable = false)
+    @JoinColumn(name = "COD_ASIGNATURA", referencedColumnName = "COD_ASIGNATURA", nullable = false)
     @ManyToOne
     private CraAsignatura codAsignatura;
     
-    @JoinColumn(name = "COD_MALLA", referencedColumnName = "COD_MALLA", nullable = false, updatable =  false, insertable = false)
+    @JoinColumn(name = "COD_MALLA", referencedColumnName = "COD_MALLA", nullable = false)
     @ManyToOne
     private CraMalla codMalla;
 

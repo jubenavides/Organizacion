@@ -38,7 +38,7 @@ public class CraCarrera implements Serializable {
     @Column(name = "NIVEL", nullable = false, length = 20)
     private String nivel;
     
-    @JoinColumn(name = "COD_DEPARTAMENTO", referencedColumnName = "COD_DEPARTAMENTO", nullable = false, updatable = false, insertable = false)
+    @JoinColumn(name = "COD_DEPARTAMENTO", referencedColumnName = "COD_DEPARTAMENTO", nullable = false)
     @ManyToOne
     private OrgDepartamento codDepartamento;
 

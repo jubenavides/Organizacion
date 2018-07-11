@@ -5,7 +5,7 @@
  */
 package ec.edu.espe.arquitectura.organizacion.dao;
 
-import ec.edu.espe.arquitectura.organizacion.model.CraPrerrequisito;
+import ec.edu.espe.arquitectura.organizacion.model.CraPrerequisito;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -15,7 +15,7 @@ import javax.persistence.PersistenceContext;
  * @author jolube
  */
 @Stateless
-public class CraPrerrequisitoFacade extends AbstractFacade<CraPrerrequisito> {
+public class CraPrerequisitoFacade extends AbstractFacade<CraPrerequisito> {
 
     @PersistenceContext(unitName = "ec.edu.espe.arquitectura.organizacion_Organizacion-ejb_ejb_1PU")
     private EntityManager em;
@@ -25,8 +25,8 @@ public class CraPrerrequisitoFacade extends AbstractFacade<CraPrerrequisito> {
         return em;
     }
 
-    public CraPrerrequisitoFacade() {
-        super(CraPrerrequisito.class);
+    public CraPrerequisitoFacade() {
+        super(CraPrerequisito.class);
     }
     
 }
