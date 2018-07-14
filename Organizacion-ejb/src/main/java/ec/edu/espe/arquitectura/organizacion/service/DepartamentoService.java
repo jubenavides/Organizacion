@@ -46,4 +46,7 @@ public class DepartamentoService {
         this.departamentoFacade.remove(departamento);
     }
     
+     public List<OrgDepartamento> obtenerPorNombre(String departamentoNombre) {
+        return this.departamentoFacade.obtenerPorNombre(departamentoNombre);
+    }
 }

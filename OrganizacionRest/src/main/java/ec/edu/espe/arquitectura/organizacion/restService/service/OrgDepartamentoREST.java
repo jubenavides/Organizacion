@@ -44,6 +44,13 @@ public class OrgDepartamentoREST {
         return departamentoService.obtenerPorCodigo(id);
     }
 
+    @GET
+    @Path("/nombre/{nombre}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<OrgDepartamento> findByName(@PathParam("nombre") String nombre) {
+        return departamentoService.obtenerPorNombre(nombre);
+    }
+
     @POST
     @Path("/insertar")
     @Consumes(MediaType.APPLICATION_JSON)
