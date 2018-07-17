@@ -29,6 +29,7 @@ public class ApplicationConfig extends Application {
      * If required, comment out calling this method in getClasses().
      */
     private void addRestResourceClasses(Set<Class<?>> resources) {
+        resources.add(ec.edu.espe.arquitectura.filter.ResponseCorsFilter.class);
         resources.add(ec.edu.espe.arquitectura.organizacion.restService.service.CraAsignaturaREST.class);
         resources.add(ec.edu.espe.arquitectura.organizacion.restService.service.CraCarreraREST.class);
         resources.add(ec.edu.espe.arquitectura.organizacion.restService.service.CraDetalleMallaREST.class);
